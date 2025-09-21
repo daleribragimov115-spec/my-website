@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sushi Yummiy - Mobil Menyu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header id="main-header">
+      <div class="container">
+        <div class="header-top">
+          <div class="logo">
+            <img
+              class="header-logo notranslate"
+              src="img/Logo.png"
+              alt="Sushi Yummiy Logo"
+            />
+            <h1 class="notranslate">Sushi Yummiy</h1>
+          </div>
+
+          <div class="language-selector" id="language-selector">
+            <!-- Google Translate elementi -->
+            <div id="google_translate_element"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="scroll-top" id="scroll-top">
+      <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <div class="modal" id="deleteModal">
+      <div class="modal-content">
+        <h3>Отзыв удалить?</h3>
+        <p>
+          Вы уверены, что хотите удалить свой отзыв? Это действие нельзя
+          отменить.
+        </p>
+        <div class="modal-buttons">
+          <button class="modal-btn cancel" id="cancelDelete">Отмена</button>
+          <button class="modal-btn delete" id="confirmDelete">Удалить</button>
+        </div>
+      </div>
+    </div>
+
+    <main class="container">
+      <div id="home-section" class="content-section active">
+        <div class="categories">
+          <button class="category-btn active" data-category="all">Все</button>
+          <button class="category-btn" data-category="snacks">Закуски</button>
+          <button class="category-btn" data-category="salads">Салаты</button>
+          <button class="category-btn" data-category="soups">
+            Первые блюда
+          </button>
+          <button class="category-btn" data-category="main">
+            Вторые блюда
+          </button>
+          <button class="category-btn" data-category="rolls">Роллы</button>
+          <button class="category-btn" data-category="sushi">Суши</button>
+          <button class="category-btn" data-category="sets">Сеты</button>
+          <button class="category-btn" data-category="desserts">Десерты</button>
+        </div>
+
+        <div class="menu-category" data-category="snacks">
+          <h2 class="category-title">Закуски</h2>
+          <div class="menu-items">
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img class="img-menyu" src="img/закуски/закуски-1-new.webp" alt="Ассорти фри"/>
+                <div>Ассорти фри</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Ассорти фри</h3>
+                <p class="item-desc">Картофель по деревенский, Картофель фри, Картофелные шарики, Пай, Кетчуп
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">50 000 сум</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/закуски/закуски-2-new.webp" alt=""/>
+                <div>Картофель по деревенски</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Картофель по деревенски</h3>
+                <p class="item-desc">Картофель, обжаренный в масле, Кетчуп</p>
+                <div class="item-footer">
+                  <span class="item-price">19 000 сум</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/закуски/закуски-3-new.webp" alt=""/>
+                <div>Картофель фри</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Картофель Фри</h3>
+                <p class="item-desc">Картофель, обжаренный в масле, Кетчуп</p>
+                <div class="item-footer">
+                  <span class="item-price">19 000 сум</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/закуски/закуски-4-new.webp" alt=""/>
+                <div>Курица темпура</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Курица темпура</h3>
+                <p class="item-desc">
+                  Куриное филе, обжаренное в панировочных сухарях, соус Сладкий
+                  чили
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">23 000 сум</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/закуски/закуски-5-new.webp" alt=""/>
+                <div>Хлеб с чесночным соусом</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Хлеб с чесночным соусом</h3>
+                <p class="item-desc">Белый хлеб, Чесночный замес</p>
+                <div class="item-footer">
+                  <span class="item-price">12 000 сум</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/закуски/закуски-6-new.webp" alt=""/>
+                <div>Эби темпура</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Эби темпура</h3>
+                <p class="item-desc">Креветки, в панировочных сухарях, Обжаренные в масле, Соус, Сладкий чили
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">66 000 сум</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="salads">
+          <h2 class="category-title">Салаты</h2>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Салаты/салаты-1-new.webp" alt=""/>
+                <div>Греческий салат</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Греческий салат</h3>
+                <p class="item-desc">Болгарский перец, Фетакса, Огурец, Помидоры, Айсберг, Маслины, Лук, Оливковое масло, Соус, Дрессинг</p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Салаты/салаты-3-new.webp" alt=""/>
+                <div>Цезарь с Курицей</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Цезарь с Курицей</h3>
+                <p class="item-desc">
+                  Айсберг, Курица, Помидоры, Соус, Цезарь, Сыр, Пармезан
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">33 000 сум</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Салаты/салаты-4-new.webp" alt=""/>
+                <div>Чука</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Чука</h3>
+                <p class="item-desc">Лосось, Сливочный сыр, Огурец</p>
+                <div class="item-footer">
+                  <span class="item-price">33 000 сум</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-category" data-category="soups">
+          <h2 class="category-title">Первые блюда</h2>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Первые блюда/Первые блюда-1-new.webp" alt=""/>
+                <div>Мисо суп с лососем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Мисо суп с лососем</h3>
+                <p class="item-desc">Мисо бульон, Лосось, Сыр, Тофу, Ваками, Водоросли, Рис, Кунжут, Зеленый лук</p>
+                <div class="item-footer">
+                  <span class="item-price">33 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Первые блюда/Первые блюда-2-new.webp" alt=""/>
+                <div>Рамен</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Рамен</h3>
+                <p class="item-desc">Бульон рамен, Лапша рамен, Яйцо, Грибы, Водоросли вакаме, Шиитаке, Кунжут, Зеленый лук
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">34 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Первые блюда/Первые блюда-3-new.webp" alt=""/>
+                <div>Рамен с говядиной</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Рамен с говядиной</h3>
+                <p class="item-desc">
+                  Лапша рамен, Говядина, Яйцо, Шиитаке, Вакаме, Кунжут, Зелёный
+                  лук
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">60 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Первые блюда/Первые блюда-4-new.webp" alt=""/>
+                <div>Рамен с Курицей</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Рамен с Курицей</h3>
+                <p class="item-desc">
+                  Бульон рамен, Курица, Лапша, Рамен, Яйцо, Грибы, Водоросли
+                  вакаме, Шиитаке, Кунжут, Зеленый лук
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">47 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Первые блюда/Первые блюда-5-new.webp" alt=""/>
+                <div>Том-ям Криветками</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Том-ям Криветками</h3>
+                <p class="item-desc">Криветки, Шампиньоны, Том ям бульон</p>
+                <div class="item-footer">
+                  <span class="item-price">99 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Первые блюда/Первые блюда-6-new.webp" alt=""/>
+                <div>Том-ям с море продуктами</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Том-ям с море продуктами</h3>
+                <p class="item-desc">
+                  Бульон том-ям, Креветки, Мидии, Кальмар, Осьминог, Лайм, Грибы
+                  шампиньоны, Помидоры черри, Кокосовое молоко, Рис, Кунжут
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">110 000 сум</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-category" data-category="main">
+          <h2 class="category-title">Вторые блюда</h2>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Вторые-блюда/Вторые-блюда-1-new.webp" alt=""/>
+                <div>Бизнес ланч №1</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Бизнес ланч №1</h3>
+                <p class="item-desc">
+                  Удон с курицей, Чука салат, Курица, Темпура, Филадельфия с
+                  огурцом
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">65 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Вторые-блюда/Вторые-блюда-2-new.webp" alt=""/>
+                <div>Бизнес ланч №2</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Бизнес ланч №2</h3>
+                <p class="item-desc">
+                  Удон с курицей, Чука салат, Курица, Темпура, Калифорния с крабом
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">65 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Вторые-блюда/Вторые-блюда-3-new.webp" alt=""/>
+                <div>Бизнес ланч №3</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Бизнес ланч №3</h3>
+                <p class="item-desc">
+                  Рис с курицей м терияки, Цезарь с курицей, Курица, Темпура, Мини
+                  ролл с лососем
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">65 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Вторые-блюда/Вторые-блюда-4-new.webp" alt=""/>
+                <div>Гречневая лапша с говядиной</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Гречневая лапша с говядиной</h3>
+                <p class="item-desc">
+                  Гречневая лапша, Говядина, Сезонные овощи, Терияки, Кунжут
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">46 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Вторые-блюда/Вторые-блюда-5-new.webp" alt=""/>
+                <div>Гречневая лапша с курицейй</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Гречневая лапша с курицейй</h3>
+                <p class="item-desc">
+                  Гречневая лапша, Курицаа, Сезонные овощи, Терияки, Кунжут
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">40 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Вторые-блюда/Вторые-блюда-6-new.webp" alt=""/>
+                <div>Крылышки в терияки</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Крылышки в терияки</h3>
+                <p class="item-desc">Крылья куриные, терияки соус</p>
+                <div class="item-footer">
+                  <span class="item-price">43 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Вторые-блюда/Вторые-блюда-7-new.webp" alt=""/>
+                <div>Удон с говядиной</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Удон с говядиной</h3>
+                <p class="item-desc">
+                  Удон, Говядина, Сезонные овощи, Терияки, Кунжут
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">46 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Вторые-блюда/Вторые-блюда-8-new.webp" alt=""/>
+                <div>Удон с курицей</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Удон с курицей</h3>
+                <p class="item-desc">
+                  Овощи микс, Куриное бедро, Соус терияки, Кунжут, Зеленый лук
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">40 000 сум</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="menu-category" data-category="rolls">
+          <h2 class="category-title">Роллы</h2>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-1-new.webp" alt=""/>
+                <div>Банзай</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Банзай</h3>
+                <p class="item-desc">
+                  Креветки, Икра Масаго, Огурец, Сыр Сливочный
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+  
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-2-new.webp" alt=""/>
+                <div>Запеченная калифорния</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Запеченная калифорния</h3>
+                <p class="item-desc">
+                  Краб, огурец, Сырные шапочки, Соус унаги, Икра масаго
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+  
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-3-new.webp" alt=""/>
+                <div>Запеченный ролл море сыра</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Запеченный ролл море сыра</h3>
+                <p class="item-desc">
+                  Огурец, Сыр Чеддер, Кунжут, Сырные шапочки, Соус унаги, Сыр
+                  сливочный
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">50 000 сум</span>
+                </div>
+              </div>
+            </div>
+  
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-4-new.webp" alt=""/>
+                <div>Запеченный ролл с креветкой</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Запеченный ролл с креветкой</h3>
+                <p class="item-desc">
+                  Креветки, Огурец, Сырные шапочки, Соус унаги, Сыр сливочный
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">76 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-5-new.webp" alt=""/>
+                <div>Запеченный ролл с курицей</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Запеченный ролл с курицей</h3>
+                <p class="item-desc">
+                  Куриная грудка, Сырные шапочки, Соус унаги, Айсберг
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">48 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-6-new.webp" alt=""/>
+                <div>Запеченный ролл с лососем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Запеченный ролл с лососем</h3>
+                <p class="item-desc">
+                  Лосось, Сырные шапочки, Огурец, Пай, Соус унаги, Кунжут
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">73 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-7-new.webp" alt=""/>
+                <div>Запеченный с Угрем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Запеченный с Угрем</h3>
+                <p class="item-desc">
+                  Угорь, Сырная шапочка, Сыр сливочный, Огурец, Соус унаги, Кунжут
+                  чёрный
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">76 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-8-new.webp" alt=""/>
+                <div>Калифорния с крабом</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Калифорния с крабом</h3>
+                <p class="item-desc">
+                  Снежный краб, Майонез, Огурец, Икра масаго
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">64 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-9-new.webp" alt=""/>
+                <div>Калифорния с креветкой</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Калифорния с креветкой</h3>
+                <p class="item-desc">
+                  Креветки, Икра масаго, Сыр сливочный, Огурец
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">73 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-10-new.webp" alt=""/>
+                <div>Калифорния с лососем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Калифорния с лососем</h3>
+                <p class="item-desc">
+                  Лосось, Огурец, Сыр сливочный, Икра масаго
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">76 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-11-new.webp" alt=""/>
+                <div>Калифорния с угрем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Калифорния с угрем</h3>
+                <p class="item-desc">
+                  Угорь, Огурец, Сыр сливочный, Икра масаго, Кунжут чёрный
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">79 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-12-new.webp" alt=""/>
+                <div>Канада голд</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Канада голд</h3>
+                <p class="item-desc">
+                  Угорь, Лосось, Сыр сливочный, Соус унаги, Кунжут
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">105 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-13-new.webp" alt=""/>
+                <div>Канада классик (с огурцом)</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Канада классик (с огурцом)</h3>
+                <p class="item-desc">
+                  Угорь, Сыр сливочный, Огурец, Соус унаги, Кунжут
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">99 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-14-new.webp" alt=""/>
+                <div>Красный Дракон</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Красный Дракон</h3>
+                <p class="item-desc">
+                  Сыр, Огурец, Угорь, Авокадо, Соус унаги, Чёрный кунжут
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">105 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-15-new.webp" alt=""/>
+                <div>Креветка в кляре</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Креветка в кляре</h3>
+                <p class="item-desc">Креветки, Кунжут, Огурец, Майонез</p>
+                <div class="item-footer">
+                  <span class="item-price">60 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-16-new.webp" alt=""/>
+                <div>Курица в кляре</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Курица в кляре</h3>
+                <p class="item-desc">
+                  Курица в кляре, Майонез, Огурец, Кунжут, Соус сладкий чили
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">40 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-17-new.webp" alt=""/>
+                <div>Лосось в кляре</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Лосось в кляре</h3>
+                <p class="item-desc">
+                  Лосось в кляре, Сыр сливочный, Огурец, Кунжут, Соус сладкий чили
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">46 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-18-new.webp" alt=""/>
+                <div>Мини ролл с авокадо</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Мини ролл с авокадо</h3>
+                <p class="item-desc">Авокадо, Сыр сливочный, Рис, Нори</p>
+                <div class="item-footer">
+                  <span class="item-price">32 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-19-new.webp" alt=""/>
+                <div>Мини ролл с тунцом</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Мини ролл с тунцом</h3>
+                <p class="item-desc">Тунец, Сыр сливочный, Рис, Нори</p>
+                <div class="item-footer">
+                  <span class="item-price">38 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-20-new.webp" alt=""/>
+                <div>Мини ролл с угрем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Мини ролл с угрем</h3>
+                <p class="item-desc">Угорь, Сыр сливочный</p>
+                <div class="item-footer">
+                  <span class="item-price">31 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-21-new.webp" alt=""/>
+                <div>Овощной ролл</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Овощной ролл</h3>
+                <p class="item-desc">
+                  Помидоры, Айсберг, Болгарский перец, Огурец, Сыр сливочный
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">33 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-22-new.webp" alt=""/>
+                <div>Ролл Бонус</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Ролл Бонус</h3>
+                <p class="item-desc">
+                  Лосось в кляре, Огурец, Сыр сливочный, Икра масаго
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">59 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-23-new.webp" alt=""/>
+                <div>Ролл Фиеста</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Ролл Фиеста</h3>
+                <p class="item-desc">
+                  Снежный краб, Японский омлет, Сыр сливочный, Салат айсберг, Спайс соус
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">63 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-24-new.webp" alt=""/>
+                <div>Сердце Ромео</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сердце Ромео</h3>
+                <p class="item-desc">
+                  Лосось, Сыр сливочный, Огурец, Икра масаго
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">62 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-25-new.webp" alt=""/>
+                <div>Сливочная креветка</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сливочная креветка</h3>
+                <p class="item-desc">Креветки, Сыр сливочный, Рис, Нори</p>
+                <div class="item-footer">
+                  <span class="item-price">101 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-26-new.webp" alt=""/>
+                <div>Снежная Королева</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Снежная Королева</h3>
+                <p class="item-desc">Снежный краб, Лосось, Майонез, Огурец, Сыр сливочный, Икра масаго
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">66 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-27-new.webp" alt=""/>
+                <div>Спайс Ролл с лососем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Спайс Ролл с лососем</h3>
+                <p class="item-desc">
+                  Лосось, Кунжут, Сыр сливочный, Огурец, Спайс соус
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">48 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-28-new.webp" alt=""/>
+                <div>Спайс Тунец</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Спайс Тунец</h3>
+                <p class="item-desc">Тунец, Авокадо, Лук зеленый, Спайси соус</p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-29-new.webp" alt=""/>
+                <div>Сяке Икура</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сяке Икура</h3>
+                <p class="item-desc">
+                  Лосось, Авокадо, Сыр сливочный, Икра Лосося
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">115 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-30-new.webp" alt=""/>
+                <div>Темпура с креветкой</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Темпура с креветкой</h3>
+                <p class="item-desc">
+                  Креветки, Икра масаго, Огурец, Соус унаги, Майонез
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">64 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-31-new.webp" alt=""/>
+                <div>Темпура с лососем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Темпура с лососем</h3>
+                <p class="item-desc">Лосось, Сыр, Огурец, Соус унаги</p>
+                <div class="item-footer">
+                  <span class="item-price">66 000v сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-32-new.webp" alt=""/>
+                <div>Темпура с угрем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Темпура с угрем</h3>
+                <p class="item-desc">Угорь, Икра масаго, Соус унаги, Кунжут</p>
+                <div class="item-footer">
+                  <span class="item-price">71 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-33-new.webp" alt=""/>
+                <div>Тигровый Голд</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Тигровый Голд</h3>
+                <p class="item-desc">
+                  Креветки, Лосось, Креветки, Сыр сливочный, Огурцы, Икра масаго,
+                  Кунжут чёрный
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">96 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-34-new.webp" alt=""/>
+                <div>Три Моря</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Три Моря</h3>
+                <p class="item-desc">
+                  Тунец, Лосось, Креветки, Сыр сливочный, Огурец
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">85 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-35-new.webp" alt=""/>
+                <div>Филадельфия классик</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Филадельфия классик</h3>
+                <p class="item-desc">Лсось, Огурец, Сыр сливочный</p>
+                <div class="item-footer">
+                  <span class="item-price">88 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-36-new.webp" alt=""/>
+                <div>Филадельфия с авокадо</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Филадельфия с авокадо</h3>
+                <p class="item-desc">Лосось, Авокадо, Сыр сливочный</p>
+                <div class="item-footer">
+                  <span class="item-price">99 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-37-new.webp" alt=""/>
+                <div>Филадельфия с огурцом</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Филадельфия с огурцом</h3>
+                <p class="item-desc">Лосось, Огурец, Сыр сливочный</p>
+                <div class="item-footer">
+                  <span class="item-price">88 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-38-new.webp" alt=""/>
+                <div>Филадельфия с тунцом</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Филадельфия с тунцом</h3>
+                <p class="item-desc">Тунец, Сыр сливочный, Огурец</p>
+                <div class="item-footer">
+                  <span class="item-price">85 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-39-new.webp" alt=""/>
+                <div>Филадельфия сливочная</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Филадельфия сливочная</h3>
+                <p class="item-desc">Лосось, Сыр сливочный</p>
+                <div class="item-footer">
+                  <span class="item-price">92 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-40-new.webp" alt=""/>
+                <div>Цезарь ролл</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Цезарь ролл</h3>
+                <p class="item-desc">
+                  Куриная грудка, Айсберг, Сыр Сливочный, Сыр Пармезан, Соус
+                  Цезарь
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-41-new.webp" alt=""/>
+                <div>Эби Голд</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Эби Голд</h3>
+                <p class="item-desc">
+                  Креветка в кляре, Лосось, Авокадо, Сыр Сливочный
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">110 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Роллы/Роллы-42-new.webp" alt=""/>
+                <div>Мини ролл с авокадо</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Мини ролл с авокадо</h3>
+                <p class="item-desc">Авокадо, Сыр сливочный, Рис, Нори</p>
+                <div class="item-footer">
+                  <span class="item-price">32 000 сум</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="menu-category" data-category="sushi">
+          <h2 class="category-title">Суши</h2>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Суши/Суши-1-new.webp" alt=""/>
+                <div>Запеченное суши с Тунцом</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Запеченное суши с Тунцом</h3>
+                <p class="item-desc">Тунец, Рис, Сырная шапочка</p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Суши/Суши-2-new.webp" alt=""/>
+                <div>Спайс суши с Тунцом</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Спайс суши с Тунцом</h3>
+                <p class="item-desc">Тунец, Рис, Спайси соус</p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Суши/Суши-3-new.webp" alt=""/>
+                <div>Суши с икрой Лосося</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Суши с икрой Лосося</h3>
+                <p class="item-desc">Икра, Лосося-Рис</p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Суши/Суши-4-new.webp" alt=""/>
+                <div>Суши с икрой Массаго</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Суши с икрой Массаго</h3>
+                <p class="item-desc">Икра Массаго, Рис</p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Суши/Суши-5-new.webp" alt=""/>
+                <div>Суши с Креветкой</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Суши с Креветкой</h3>
+                <p class="item-desc">Креветка, Рис</p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Суши/Суши-6-new.webp" alt=""/>
+                <div>Суши с Лососем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Суши с Лососем</h3>
+                <p class="item-desc">Лосось, Рис</p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Суши/Суши-7-new.webp" alt=""/>
+                <div>Суши С Тунцом</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Суши С Тунцом</h3>
+                <p class="item-desc">Тунец, Рис</p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Суши/Суши-8-new.webp" alt=""/>
+                <div>Суши с Угрем</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Суши с Угрем</h3>
+                <p class="item-desc">Угорь, Рис, Соус унаги, Кунжут</p>
+                <div class="item-footer">
+                  <span class="item-price">22 000 сум</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="menu-category" data-category="sets">
+          <h2 class="category-title">Сеты</h2>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-1-new.webp" alt=""/>
+                <div>Гункан Сет</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Гункан Сет</h3>
+                <p class="item-desc">
+                  Суши с икрой лосося, Суши с масаго, Суши запечённый с лососем,
+                  Спайс суши с тунцом
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-2-new.webp" alt=""/>
+                <div>Сет 8 марта макс (48)</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет 8 марта макс (48)</h3>
+                <p class="item-desc">
+                  Филадельфия с огурцом, Калифорния с угрём, Лосось в кляре,
+                  Запечённый ролл с угрём, Запечённый ролл с лососем, Темпура с
+                  масаго
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-3-new.webp" alt=""/>
+                <div>Сет 8 марта мини (32шт)</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет 8 марта мини (32шт)</h3>
+                <p class="item-desc">
+                  Филадельфия с огурцом, Калифорния с лососем, Спайси ролл с
+                  крабом, Запечённый ролл с угрём
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-4-new.webp" alt=""/>
+                <div>Сет Жарево</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Жарево</h3>
+                <p class="item-desc">
+                  Темпура с крабом, Темпура с лососем, Запечённый ролл с курицей,
+                  Запечённый ролл «Море сыра» (32 шт.)
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-5-new.webp" alt=""/>
+                <div>Сет Идеал</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Идеал</h3>
+                <p class="item-desc">
+                  Филадельфия классик (0.5), Канада классик (0.5), Мини ролл со
+                  снежным крабом, Темпура с лососем (24 шт.)
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-6-new.webp" alt=""/>
+                <div>Сет Император</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Император</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Канада классик, Лава ролл, Лосось в кляре,
+                  Запечённый ролл с лососем, Запечённый ролл с лососем, Темпура с
+                  лососем, Запечённый ролл «Море сыра» (64 шт.)
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-7-new.webp" alt=""/>
+                <div>Сет Лето</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Лето</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Микс ролл, Курица в кляре, Запечённая
+                  Калифорния (32 шт.)
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-8-new.webp" alt=""/>
+                <div>Сет Лидер продаж</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Лидер продаж</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Калифорния в кунжуте, Темпура с курицей,
+                  Мини ролл с икрой масаго, Мини ролл с лососем, Мини ролл со
+                  снежным крабом (48 шт.)
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-9-new.webp" alt=""/>
+                <div>Сет Лосось бокс</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Лосось бокс</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Калифорния с лососем, Лосось в кунжуте,
+                  Мини ролл с лососем (32 шт.)
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-10-new.webp" alt=""/>
+                <div>Сет Лучшая коллекция</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Лучшая коллекция</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Канада классик, Калифорния с крабом,
+                  Запеченный ролл с креветкой, Мини ролл с огурцом, Мини ролл с
+                  лососем, Мини ролл со снежным крабом, Темпура с лососем (64 шт.)
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-11-new.webp" alt=""/>
+                <div>Сет Мини</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Мини</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Запеченный ролл с курицей, Темпура с
+                  лососем (24 шт.)
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-12-new.webp" alt=""/>
+                <div>Сет Мини бокс</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Мини бокс</h3>
+                <p class="item-desc">
+                  Мини ролл с креветкой, Мини ролл с угрём, Мини ролл с огурцом,
+                  Мини ролл с лососем, Мини ролл со снежным крабом (40 шт.)
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-13-new.webp" alt=""/>
+                <div>Сет на двоих</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет на двоих</h3>
+                <p class="item-desc">
+                  Филадельфия классик (0.5), Канада классик (0.5), Лосось в кляре,
+                  Мини ролл с угрём, Калифорния с лососем
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-14-new.webp" alt=""/>
+                <div>Сет Окей</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Окей</h3>
+                <p class="item-desc">
+                  Калифорния со снежным крабом, Запеченный ролл море сыра,
+                  Запеченный ролл с курицей, Темпура с лососем, Мини ролл с
+                  копчёным лососем
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-15-new.webp" alt=""/>
+                <div>Сет Популярный</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Популярный</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Канада классик, Темпура с лососем, Мини
+                  ролл с лососем, Мини ролл с угрём, Калифорния с крабом,
+                  Запечённый ролл с лососем
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-16-new.webp" alt=""/>
+                <div>Сет Праздничный</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Праздничный</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Канада классик, Калифорния со снежным
+                  крабом, Тигровый Голд, Цезарь ролл, Запечённый ролл с лососем
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-17-new.webp" alt=""/>
+                <div>Сет Праздничный мини</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Праздничный мини</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Канада классик, Мини ролл с лососем,
+                  Запечённая Калифорния, Запечённый ролл с лососем, Мини ролл с
+                  хияши
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-18-new.webp" alt=""/>
+                <div>Сет Сакура</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Сакура</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Канада классик, Лава ролл, Лосось в кляре,
+                  Запечённый с угрём, Темпура с лососем
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-19-new.webp" alt=""/>
+                <div>Сет Сочный</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Сочный</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Микс ролл, Курица в кляре, Запечённая
+                  Калифорния, Запечённый ролл с лососем, Темпура с лососем — 48 шт
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-20-new.webp" alt=""/>
+                <div>Сет Угорь бокс</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Угорь бокс</h3>
+                <p class="item-desc">
+                  Канада классик, Калифорния с угрем, Угорь в кунжуте, Мини ролл с
+                  угрем
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-21-new.webp" alt=""/>
+                <div>Сет Хайп</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Хайп</h3>
+                <p class="item-desc">
+                  Филадельфия классик (0.5), Канада классик (0.5), Калифорния с
+                  лососем, Лосось в кляре, Запечённый ролл с угрём
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-22-new.webp" alt=""/>
+                <div>Сет Хит</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Хит</h3>
+                <p class="item-desc">
+                  Филадельфия классик, Запечённый ролл с лососем, Запечённый ролл
+                  с угрём, Темпура с курицей
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-23-new.webp" alt=""/>
+                <div>Сет Хочу (32)</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Хочу (32)</h3>
+                <p class="item-desc">
+                  Филадельфия классик (0.5), Канада классик (0.5), Калифорния с
+                  лососем, Запечённый ролл с курицей, Запечённый ролл с угрём
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-24-new.webp" alt=""/>
+                <div>Сет Юмми</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сет Юмми</h3>
+                <p class="item-desc">
+                  Филадельфия классик (0.5) - Канада классик (0.5)- Калифорния с
+                  лососем - Запеченный ролл с курицей- Запеченный ролл с угрем 32
+                  шт
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Сеты/Сеты-25-new.webp" alt=""/>
+                <div>Суши Сет</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Суши Сет</h3>
+                <p class="item-desc">С угрём, с лососем, с тунцом, с креветкой</p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="menu-category" data-category="desserts">
+          <h2 class="category-title">Десерты</h2>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Десерты/Десерты-1-new.webp" alt=""/>
+                <div>Айс Моти</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Айс Моти</h3>
+                <p class="item-desc"></p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Десерты/Десерты-2-new.webp" alt=""/>
+                <div>Макаронс</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Макаронс</h3>
+                <p class="item-desc"></p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="item-image">
+                <img src="img/Десерты/Десерты-3-new.webp" alt="" />
+                <div>Сладкий ролл фруктовый</div>
+              </div>
+              <div class="item-info">
+                <h3 class="item-title">Сладкий ролл фруктовый</h3>
+                <p class="item-desc">
+                  Блинчик сладкий, замес, киви, яблоко, банан
+                </p>
+                <div class="item-footer">
+                  <span class="item-price">45 000 сум</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="info-section" class="content-section">
+        <div class="info-card">
+          <h3><i class="fas fa-map-marker-alt"></i> Наш адрес</h3>
+          <p>г. Ташкент, Мирзо Улугбекский район, ул. Амира Темура, 45</p>
+          <p>Второй филиал: рядом с Самаркандскими воротами</p>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="fas fa-phone"></i> Телефонные номера</h3>
+          <p>+998 71 123 45 67</p>
+          <p>+998 90 123 45 67 (Telegram/WhatsApp)</p>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="fas fa-clock"></i> Наше время работы</h3>
+          <p>Понедельник-Пятница: 10:00 - 23:00</p>
+          <p>Суббота-Воресенье: 11:00 - 00:00</p>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="fab fa-instagram"></i> Instagram</h3>
+          <p>
+            Подписывайтесь на нас:
+            <a href="https://instagram.com/sushihouse" target="_blank"
+              >@sushihouse</a
+            >
+          </p>
+          <p>Каждую неделю новые акции и скидки!</p>
+        </div>
+      </div>
+
+      <div id="reviews-section" class="content-section">
+        <div class="review-success" id="reviewSuccess">
+          Спасибо за ваш отзыв! После модерации он появится на сайте.
+        </div>
+
+        <div class="review-form">
+          <h3>Оставьте свой отзыв</h3>
+          <form id="reviewForm">
+            <div class="form-group">
+              <label for="name">Ваше имя</label>
+              <input type="text" id="name" required placeholder="Ваше имя" />
+            </div>
+
+            <div class="form-group">
+              <label for="rating">Ваша оценка</label>
+              <select id="rating" required>
+                <option value="">Выберите оценку</option>
+                <option value="5">★★★★★ Отлично</option>
+                <option value="4">★★★★ Хорошо</option>
+                <option value="3">★★★ Удовлетворительно</option>
+                <option value="2">★★ Плохо</option>
+                <option value="1">★ Очень плохо</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="comment">Отзыв</label>
+              <textarea
+                id="comment"
+                required
+                placeholder="Напишите ваш отзыв..."
+                minlength="10"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn">Отправить отзыв</button>
+          </form>
+        </div>
+
+        <div class="reviews-list" id="reviewsList">
+          <h3 style="margin: 20px 0 10px; color: #1a237e">Отзывы клиентов</h3>
+          <!-- Reviews will be loaded here from the backend -->
+        </div>
+
+        <div class="load-more-container" id="loadMoreContainer">
+          <button class="load-more-btn" id="loadMoreBtn">
+            <i class="fas fa-chevron-down"></i> Ещё отзывы
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <div class="bottom-nav">
+      <a href="#" class="nav-item active" data-target="home-section">
+        <i class="fas fa-home"></i>
+        <span>Главная</span>
+      </a>
+      <a href="#" class="nav-item" data-target="info-section">
+        <i class="fas fa-info-circle"></i>
+        <span>Информация</span>
+      </a>
+      <a href="#" class="nav-item" data-target="reviews-section">
+        <i class="fas fa-comments"></i>
+        <span>Отзывы</span>
+      </a>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
