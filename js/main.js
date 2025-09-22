@@ -1,4 +1,4 @@
-              // Backend server URL - using JSON Server for demonstration
+      // Backend server URL - using JSON Server for demonstration
       const API_BASE_URL = "http://localhost:3001";
 
       // Google Translate funktsiyasi
@@ -354,6 +354,31 @@
                 }
               });
             }
+          });
+        });
+
+        // Главная bo'limidagi kategoriyalar uchun hodisalar
+        const homeCategories = document.querySelectorAll(".home-category");
+        homeCategories.forEach((category) => {
+          category.addEventListener("click", function() {
+            const categoryType = this.getAttribute("data-category");
+            
+            // Navigatsiyani "Меню" bo'limiga o'tkazish
+            document.querySelector('[data-target="menu-section"]').click();
+            
+            // Tegishli kategoriyani tanlash
+            setTimeout(() => {
+              const categoryBtn = document.querySelector(`.category-btn[data-category="${categoryType}"]`);
+              if (categoryBtn) {
+                categoryBtn.click();
+                
+                // Sahifani yuqoriga aylantirish
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              }
+            }, 100);
           });
         });
 

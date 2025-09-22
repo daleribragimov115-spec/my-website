@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="uz">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sushi Yummiy - Mobil Menyu</title>
@@ -9,8 +9,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
+</head>
+<body>
     <header id="main-header">
       <div class="container">
         <div class="header-top">
@@ -50,7 +50,58 @@
     </div>
 
     <main class="container">
+      <!-- Yangi Главная bo'limi - faqat kategoriyalar -->
       <div id="home-section" class="content-section active">
+        <div class="home-welcome">
+          <h2>Добро пожаловать в Sushi Yummiy!</h2>
+          <p>Выберите категорию меню для просмотра блюд</p>
+        </div>
+        
+        <div class="home-categories">
+          <div class="home-category" data-category="snacks">
+            <i class="fas fa-utensils"></i>
+            <h3>Закуски</h3>
+          </div>
+          
+          <div class="home-category" data-category="salads">
+            <i class="fas fa-leaf"></i>
+            <h3>Салаты</h3>
+          </div>
+          
+          <div class="home-category" data-category="soups">
+            <i class="fas fa-utensil-spoon"></i>
+            <h3>Первые блюда</h3>
+          </div>
+          
+          <div class="home-category" data-category="main">
+            <i class="fas fa-drumstick-bite"></i>
+            <h3>Вторые блюда</h3>
+          </div>
+          
+          <div class="home-category" data-category="rolls">
+            <i class="fas fa-fish"></i>
+            <h3>Роллы</h3>
+          </div>
+          
+          <div class="home-category" data-category="sushi">
+            <i class="fas fa-ring"></i>
+            <h3>Суши</h3>
+          </div>
+          
+          <div class="home-category" data-category="sets">
+            <i class="fas fa-gift"></i>
+            <h3>Сеты</h3>
+          </div>
+          
+          <div class="home-category" data-category="desserts">
+            <i class="fas fa-ice-cream"></i>
+            <h3>Десерты</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yangi Меню bo'limi (oldingi Главная) -->
+      <div id="menu-section" class="content-section">
         <div class="categories">
           <button class="category-btn active" data-category="all">Все</button>
           <button class="category-btn" data-category="snacks">Закуски</button>
@@ -1613,7 +1664,6 @@
         </div>
       </div>
 
-
       <div id="info-section" class="content-section">
         <div class="info-card">
           <h3><i class="fas fa-map-marker-alt"></i> Наш адрес</h3>
@@ -1701,6 +1751,10 @@
       <a href="#" class="nav-item active" data-target="home-section">
         <i class="fas fa-home"></i>
         <span>Главная</span>
+      </a>
+      <a href="#" class="nav-item" data-target="menu-section">
+        <i class="fas fa-utensils"></i>
+        <span>Меню</span>
       </a>
       <a href="#" class="nav-item" data-target="info-section">
         <i class="fas fa-info-circle"></i>
