@@ -16,3 +16,40 @@
         .home-category {width: calc(50% - 20px); padding: 15px 10px;}
         .home-category i {font-size: 28px;}
       }
+
+                  /* O'z sharhi uchun badge */
+      .own-review-badge {
+          background: #4caf50;
+          color: white;
+          padding: 2px 8px;
+          border-radius: 12px;
+          font-size: 12px;
+          font-weight: 600;
+          margin-left: 10px;
+      }
+      
+      /* O'chirish tugmasi faqat o'z sharhlarida ko'rinadi */
+      .review-delete-btn {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          color: #999;
+          font-size: 18px;
+          transition: .3s;
+          padding: 5px;
+          border-radius: 50%;
+          z-index: 2;
+          border: none;
+          background: none;
+          cursor: pointer;
+      }
+      
+      .review-delete-btn:hover {
+          color: #ff5252;
+          background: rgba(255,82,82,.1);
+      }
+      
+      /* Foydalanuvchi sharhi uchun maxsus border */
+      .review-item[data-own="true"] {
+          border-left: 4px solid #4caf50;
+      }
