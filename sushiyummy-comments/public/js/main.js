@@ -1,8 +1,7 @@
-// Backend server URL
-const API_BASE_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:3001/api"
-    : "/api";
+// Backend server URL - Render uchun
+const API_BASE_URL = window.location.hostname === "localhost" 
+    ? "http://localhost:3001/api" 
+    : "/api"; 
 
 console.log("🚀 API Base URL:", API_BASE_URL);
 

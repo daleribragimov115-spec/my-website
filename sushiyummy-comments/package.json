@@ -1,5 +1,5 @@
 {
-  "name": "sushiyummy-comments",
+  "name": "sushiyummy",
   "version": "1.0.0",
   "description": "Sushi Yummy website with phone number comments system",
   "main": "server.js",
