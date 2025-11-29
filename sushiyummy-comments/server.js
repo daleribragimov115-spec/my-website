@@ -7,38 +7,60 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware - CORS ni Render uchun sozlash
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "http://127.0.0.1:3000",
-      "http://127.0.0.1:3001",
-      "https://sushiyummy.onrender.com",
-      "https://sushiyummy.uz", 
-    ],
-    credentials: true,
-  })
-);
+// CORS
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://127.0.0.1:3000", 
+    "http://127.0.0.1:3001",
+    "https://sushiyummy.onrender.com",
+    "https://sushiyummy.uz",
+    "https://sushi-yummy-backend.onrender.com"
+  ],
+  credentials: true,
+}));
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "docs")));
 
-// MongoDB Atlas ulanishi
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://daleribragimov115_db_user:wIOuUwU4qjfrPn9C@cluster0.8kppsgw.mongodb.net/comments_db";
+// ✅ YANGI: MongoDB Connection String - TO'G'RI VERSIYA
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://daleribragimov115_db_user:wIOuUwU4qjfrPn9C@cluster0.8kppsgw.mongodb.net/comments_db?retryWrites=true&w=majority&socketTimeoutMS=30000&connectTimeoutMS=30000";
 
-mongoose
-  .connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("✅ MongoDB Atlas ga muvaffaqiyatli ulandik");
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB ulanish xatosi:", err);
-  });
+// ✅ YANGI: MongoDB ulanishini soddalashtirish
+const connectDB = async () => {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 30000, // 30 soniya
+      socketTimeoutMS: 45000, // 45 soniya
+      bufferCommands: false, // ✅ MUHIM: Buffer ni o'chirish
+      bufferMaxEntries: 0 // ✅ MUHIM: Buffer limit
+    });
+    console.log('✅ MongoDB ga ulandik');
+  } catch (error) {
+    console.error('❌ MongoDB ulanish xatosi:', error);
+    // 10 soniyadan keyin qayta urinish
+    setTimeout(connectDB, 10000);
+  }
+};
+
+// MongoDB events
+mongoose.connection.on('connected', () => {
+  console.log('✅ MongoDB connected');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('❌ MongoDB error:', err);
+});
+
+mongoose.connection.on('disconnected', () => {
+  console.log('⚠️ MongoDB disconnected');
+});
+
+// Dastlabki ulanish
+connectDB();
 
 // Comment schemasi
 const commentSchema = new mongoose.Schema({
@@ -79,14 +101,25 @@ const commentSchema = new mongoose.Schema({
 
 const Comment = mongoose.model("Comment", commentSchema, "comments");
 
+// ✅ YANGI: Database connection tekshirish
+const ensureConnection = async () => {
+  if (mongoose.connection.readyState !== 1) {
+    console.log('🔄 MongoDB ulanmagan, qayta ulanmoqda...');
+    await connectDB();
+  }
+};
+
 // 📊 API Routes
 
 // Barcha aktiv kommentlarni olish
 app.get("/api/comments", async (req, res) => {
   try {
+    await ensureConnection();
+    
     const comments = await Comment.find({ status: "active" })
       .select("-phone -__v")
       .sort({ timestamp: -1 })
+      .maxTimeMS(30000)
       .lean();
 
     res.json({
@@ -98,24 +131,26 @@ app.get("/api/comments", async (req, res) => {
     console.error("❌ Kommentlarni olish xatosi:", error);
     res.status(500).json({
       success: false,
-      error: "Server xatosi",
+      error: "Server xatosi: " + error.message,
     });
   }
 });
 
-// 📝 Yangi komment qo'shish - SODDA VERSIYA
+// 📝 Yangi komment qo'shish - YANGILANGAN VERSIYA
 app.post("/api/comments", async (req, res) => {
-  console.log("📨 Yangi komment so'rovi keldi:", req.body);
+  console.log("📨 Yangi komment so'rovi keldi");
 
   try {
+    // ✅ Avval connection ni tekshirish
+    await ensureConnection();
+
     const { name, phone, rating, comment, subscribed = true } = req.body;
 
-    // Oddiy validatsiya
+    // Validatsiya
     if (!name || !phone || !rating || !comment) {
-      console.log("❌ Validatsiya xatosi: Barcha maydonlar to'ldirilmagan");
       return res.status(400).json({
         success: false,
-        error: "Заполните все поля.",
+        error: "Barcha maydonlarni to'ldiring",
       });
     }
 
@@ -123,18 +158,16 @@ app.post("/api/comments", async (req, res) => {
     const cleanPhone = phone.replace(/\s/g, "");
     const phoneRegex = /^\+?[0-9]{10,13}$/;
     if (!phoneRegex.test(cleanPhone)) {
-      console.log("❌ Telefon raqami xatosi:", cleanPhone);
       return res.status(400).json({
         success: false,
-        error: "Пожалуйста, введите правильный номер телефона.",
+        error: "Iltimos, to'g'ri telefon raqamini kiriting",
       });
     }
 
     if (comment.length < 10) {
-      console.log("❌ Komment uzunligi xatosi:", comment.length);
       return res.status(400).json({
         success: false,
-        error: "Комментарий должен содержать как минимум 10 символов.",
+        error: "Kommentariya kamida 10 ta belgidan iborat bo'lishi kerak",
       });
     }
 
@@ -147,10 +180,14 @@ app.post("/api/comments", async (req, res) => {
       subscribed: subscribed,
     });
 
-    // Saqlash
-    const savedComment = await newComment.save();
+    // ✅ YANGI: Timeout bilan saqlash
+    const savedComment = await Promise.race([
+      newComment.save(),
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Database timeout after 20s')), 20000)
+      )
+    ]);
 
-    // Telefon raqamisiz javob
     const responseComment = {
       _id: savedComment._id,
       name: savedComment.name,
@@ -165,82 +202,53 @@ app.post("/api/comments", async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "Комментарий успешно добавлен.",
+      message: "Kommentariya muvaffaqiyatli qo'shildi",
       comment: responseComment,
     });
+
   } catch (error) {
     console.error("❌ Komment qo'shish xatosi:", error);
 
-    // MongoDB validatsiya xatolari
-    if (error.name === "ValidationError") {
-      const errors = Object.values(error.errors).map((err) => err.message);
-      return res.status(400).json({
+    if (error.message === 'Database timeout after 20s') {
+      return res.status(504).json({
         success: false,
-        error: errors.join(", "),
+        error: "Server javob bermadi. Iltimos, qaytadan urinib ko'ring.",
       });
     }
 
-    // Boshqa xatolar
+    // MongoDB xatolari
+    if (error.name.includes('Mongo')) {
+      return res.status(503).json({
+        success: false,
+        error: "Database hozir ishlamayapti. Iltimos, birozdan keyin urinib ko'ring.",
+      });
+    }
+
     res.status(500).json({
       success: false,
-      error: "Ошибка сервера: " + error.message,
+      error: "Server xatosi: " + error.message,
     });
   }
 });
 
-// 🔧 Admin uchun barcha kommentlarni olish
-app.get("/api/admin/comments", async (req, res) => {
-  try {
-    const comments = await Comment.find()
-      .select("-__v")
-      .sort({ timestamp: -1 })
-      .lean();
-
-    res.json({
-      success: true,
-      comments: comments,
-      total: comments.length,
-    });
-  } catch (error) {
-    console.error("❌ Admin kommentlarni olish xatosi:", error);
-    res.status(500).json({
-      success: false,
-      error: "Ошибка сервера",
-    });
-  }
-});
-
-// Server holatini tekshirish
-app.get("/api/health", (req, res) => {
+// Qolgan API routes...
+app.get("/api/health", async (req, res) => {
+  const dbStatus = mongoose.connection.readyState === 1 ? "connected" : "disconnected";
+  
   res.json({
     success: true,
-    message: "Server работает",
+    message: "Server ishlayapti",
     timestamp: new Date().toISOString(),
-    mongodb:
-      mongoose.connection.readyState === 1 ? "connected" : "disconnected",
+    database: {
+      status: dbStatus,
+      readyState: mongoose.connection.readyState
+    }
   });
 });
 
 // Frontend uchun
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-// 404 handler
-app.use("*", (req, res) => {
-  res.status(404).json({
-    success: false,
-    error: "Endpoint не найден",
-  });
-});
-
-// Global error handler
-app.use((error, req, res, next) => {
-  console.error("🔥 Global error handler:", error);
-  res.status(500).json({
-    success: false,
-    error: "Внутренняя ошибка сервера",
-  });
+  res.sendFile(path.join(__dirname, "docs", "index.html"));
 });
 
 // 🚀 Serverni ishga tushirish
@@ -249,8 +257,7 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log("🚀 Sushi Yummy Server ishga tushdi!");
   console.log("=".repeat(50));
   console.log(`📍 Port: ${PORT}`);
-  console.log(`🌐 Local: http://localhost:${PORT}`);
-  console.log(`🌍 External: http://0.0.0.0:${PORT}`); // BU QATOR TO'G'RI
+  console.log(`🌍 URL: https://sushi-yummy-backend.onrender.com`);
   console.log(`🗄️ MongoDB: ${mongoose.connection.readyState === 1 ? "Ulangan" : "Ulanmagan"}`);
   console.log("=".repeat(50));
 });
