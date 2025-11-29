@@ -1,3 +1,4 @@
+require('dotenv').config(); 
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -14,7 +15,8 @@ app.use(
       "http://localhost:3001",
       "http://127.0.0.1:3000",
       "http://127.0.0.1:3001",
-      "https://sushiyummy.onrender.com", 
+      "https://sushiyummy.onrender.com",
+      "https://sushiyummy.uz", 
     ],
     credentials: true,
   })
@@ -24,9 +26,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // MongoDB Atlas ulanishi
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://daleribragimov115_db_user:wIOuUwU4qjfrPn9C@cluster0.8kppsgw.mongodb.net/comments_db";
+// MongoDB Atlas ulanishi
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://daleribragimov115_db_user:wIOuUwU4qjfrPn9C@cluster0.8kppsgw.mongodb.net/comments_db";
 
 mongoose
   .connect(MONGODB_URI, {
