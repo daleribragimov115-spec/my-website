@@ -24,25 +24,30 @@ app.use(cors({
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "docs")));
 
-// ✅ YANGI: MongoDB Connection String - TO'G'RI VERSIYA
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://daleribragimov115_db_user:wIOuUwU4qjfrPn9C@cluster0.8kppsgw.mongodb.net/comments_db?retryWrites=true&w=majority&socketTimeoutMS=30000&connectTimeoutMS=30000";
+// ✅ TO'G'RI MongoDB Connection String
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://daleribragimov115_db_user:wIOuUwU4qjfrPn9C@cluster0.8kppsgw.mongodb.net/comments_db?retryWrites=true&w=majority";
 
-// ✅ YANGI: MongoDB ulanishini soddalashtirish
+console.log("🔗 MongoDB URI:", MONGODB_URI ? "Mavjud" : "Mavjud emas");
+
+// MongoDB ulanishi
 const connectDB = async () => {
   try {
+    console.log("🔄 MongoDB ga ulanmoqda...");
+    
     await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      serverSelectionTimeoutMS: 30000, // 30 soniya
-      socketTimeoutMS: 45000, // 45 soniya
-      bufferCommands: false, // ✅ MUHIM: Buffer ni o'chirish
-      bufferMaxEntries: 0 // ✅ MUHIM: Buffer limit
+      serverSelectionTimeoutMS: 30000,
+      socketTimeoutMS: 45000,
+      bufferCommands: false,
+      bufferMaxEntries: 0
     });
-    console.log('✅ MongoDB ga ulandik');
+    
+    console.log('✅ MongoDB ga muvaffaqiyatli ulandik');
   } catch (error) {
-    console.error('❌ MongoDB ulanish xatosi:', error);
-    // 10 soniyadan keyin qayta urinish
-    setTimeout(connectDB, 10000);
+    console.error('❌ MongoDB ulanish xatosi:', error.message);
+    // 5 soniyadan keyin qayta urinish
+    setTimeout(connectDB, 5000);
   }
 };
 
@@ -52,7 +57,7 @@ mongoose.connection.on('connected', () => {
 });
 
 mongoose.connection.on('error', (err) => {
-  console.error('❌ MongoDB error:', err);
+  console.error('❌ MongoDB error:', err.message);
 });
 
 mongoose.connection.on('disconnected', () => {
@@ -101,7 +106,7 @@ const commentSchema = new mongoose.Schema({
 
 const Comment = mongoose.model("Comment", commentSchema, "comments");
 
-// ✅ YANGI: Database connection tekshirish
+// Database connection tekshirish
 const ensureConnection = async () => {
   if (mongoose.connection.readyState !== 1) {
     console.log('🔄 MongoDB ulanmagan, qayta ulanmoqda...');
@@ -136,12 +141,11 @@ app.get("/api/comments", async (req, res) => {
   }
 });
 
-// 📝 Yangi komment qo'shish - YANGILANGAN VERSIYA
+// 📝 Yangi komment qo'shish
 app.post("/api/comments", async (req, res) => {
   console.log("📨 Yangi komment so'rovi keldi");
 
   try {
-    // ✅ Avval connection ni tekshirish
     await ensureConnection();
 
     const { name, phone, rating, comment, subscribed = true } = req.body;
@@ -154,7 +158,6 @@ app.post("/api/comments", async (req, res) => {
       });
     }
 
-    // Telefon raqamini tekshirish
     const cleanPhone = phone.replace(/\s/g, "");
     const phoneRegex = /^\+?[0-9]{10,13}$/;
     if (!phoneRegex.test(cleanPhone)) {
@@ -180,7 +183,7 @@ app.post("/api/comments", async (req, res) => {
       subscribed: subscribed,
     });
 
-    // ✅ YANGI: Timeout bilan saqlash
+    // Timeout bilan saqlash
     const savedComment = await Promise.race([
       newComment.save(),
       new Promise((_, reject) => 
@@ -216,14 +219,6 @@ app.post("/api/comments", async (req, res) => {
       });
     }
 
-    // MongoDB xatolari
-    if (error.name.includes('Mongo')) {
-      return res.status(503).json({
-        success: false,
-        error: "Database hozir ishlamayapti. Iltimos, birozdan keyin urinib ko'ring.",
-      });
-    }
-
     res.status(500).json({
       success: false,
       error: "Server xatosi: " + error.message,
@@ -231,7 +226,7 @@ app.post("/api/comments", async (req, res) => {
   }
 });
 
-// Qolgan API routes...
+// Health check
 app.get("/api/health", async (req, res) => {
   const dbStatus = mongoose.connection.readyState === 1 ? "connected" : "disconnected";
   
@@ -249,6 +244,14 @@ app.get("/api/health", async (req, res) => {
 // Frontend uchun
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "docs", "index.html"));
+});
+
+// 404 handler
+app.use("*", (req, res) => {
+  res.status(404).json({
+    success: false,
+    error: "Endpoint topilmadi",
+  });
 });
 
 // 🚀 Serverni ishga tushirish
