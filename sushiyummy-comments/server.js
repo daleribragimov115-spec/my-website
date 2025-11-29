@@ -244,16 +244,13 @@ app.use((error, req, res, next) => {
 });
 
 // 🚀 Serverni ishga tushirish
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log("\n" + "=".repeat(50));
   console.log("🚀 Sushi Yummy Server ishga tushdi!");
   console.log("=".repeat(50));
   console.log(`📍 Port: ${PORT}`);
-  console.log(`🌐 URL: http://localhost:${PORT}`);
-  console.log(
-    `🗄️ MongoDB: ${
-      mongoose.connection.readyState === 1 ? "Ulangan" : "Ulanmagan"
-    }`
-  );
+  console.log(`🌐 Local: http://localhost:${PORT}`);
+  console.log(`🌍 External: http://0.0.0.0:${PORT}`); // BU QATOR TO'G'RI
+  console.log(`🗄️ MongoDB: ${mongoose.connection.readyState === 1 ? "Ulangan" : "Ulanmagan"}`);
   console.log("=".repeat(50));
 });
