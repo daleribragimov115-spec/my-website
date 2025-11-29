@@ -22,31 +22,30 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "docs")));
+
+// ✅ TO'G'RI: public papkasidan xizmat qilish
+app.use(express.static(path.join(__dirname, "public")));
 
 // MongoDB Connection String
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://daleribragimov115_db_user:wIOuUwU4qjfrPn9C@cluster0.8kppsgw.mongodb.net/comments_db?retryWrites=true&w=majority";
 
 console.log("🔗 MongoDB URI mavjudligi:", MONGODB_URI ? "Ha" : "Yo'q");
 
-// ✅ Soddalashtirilgan MongoDB ulanishi
+// MongoDB ulanishi
 const connectDB = async () => {
   try {
     console.log("🔄 MongoDB ga ulanmoqda...");
     
-    // ✅ FAQAT ZARUR OPTIONLAR
     await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 30000,
       socketTimeoutMS: 45000
-      // ❌ Boshqa optionlar olib tashlandi
     });
     
     console.log('✅ MongoDB ga muvaffaqiyatli ulandik');
   } catch (error) {
     console.error('❌ MongoDB ulanish xatosi:', error.message);
-    // 10 soniyadan keyin qayta urinish
     setTimeout(connectDB, 10000);
   }
 };
@@ -111,7 +110,6 @@ const Comment = mongoose.model("Comment", commentSchema, "comments");
 // Barcha aktiv kommentlarni olish
 app.get("/api/comments", async (req, res) => {
   try {
-    // MongoDB ulanmagan bo'lsa
     if (mongoose.connection.readyState !== 1) {
       return res.status(503).json({
         success: false,
@@ -144,7 +142,6 @@ app.post("/api/comments", async (req, res) => {
   console.log("📨 Yangi komment so'rovi keldi");
 
   try {
-    // MongoDB ulanmagan bo'lsa
     if (mongoose.connection.readyState !== 1) {
       return res.status(503).json({
         success: false,
@@ -154,7 +151,6 @@ app.post("/api/comments", async (req, res) => {
 
     const { name, phone, rating, comment, subscribed = true } = req.body;
 
-    // Validatsiya
     if (!name || !phone || !rating || !comment) {
       return res.status(400).json({
         success: false,
@@ -178,7 +174,6 @@ app.post("/api/comments", async (req, res) => {
       });
     }
 
-    // Yangi komment yaratish
     const newComment = new Comment({
       name: name.trim(),
       phone: cleanPhone,
@@ -187,7 +182,6 @@ app.post("/api/comments", async (req, res) => {
       subscribed: subscribed,
     });
 
-    // Saqlash
     const savedComment = await newComment.save();
 
     const responseComment = {
@@ -211,7 +205,6 @@ app.post("/api/comments", async (req, res) => {
   } catch (error) {
     console.error("❌ Komment qo'shish xatosi:", error);
 
-    // MongoDB xatolari
     if (error.name && error.name.includes('Mongo')) {
       return res.status(503).json({
         success: false,
@@ -241,9 +234,9 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// Frontend uchun
+// ✅ TO'G'RI: public papkasidagi index.html ni xizmat qilish
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "docs", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // 404 handler
