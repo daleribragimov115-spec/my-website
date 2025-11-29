@@ -27,27 +27,33 @@ app.use(express.static(path.join(__dirname, "docs")));
 // ✅ TO'G'RI MongoDB Connection String
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://daleribragimov115_db_user:wIOuUwU4qjfrPn9C@cluster0.8kppsgw.mongodb.net/comments_db?retryWrites=true&w=majority";
 
-console.log("🔗 MongoDB URI:", MONGODB_URI ? "Mavjud" : "Mavjud emas");
+console.log("🔗 MongoDB URI mavjudligi:", MONGODB_URI ? "Ha" : "Yo'q");
 
-// MongoDB ulanishi
+// ✅ YANGILANGAN: MongoDB ulanishi - yangi driver uchun
 const connectDB = async () => {
   try {
     console.log("🔄 MongoDB ga ulanmoqda...");
     
+    // ✅ YANGI: Yangi MongoDB driver sozlamalari
     await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 30000,
       socketTimeoutMS: 45000,
-      bufferCommands: false,
-      bufferMaxEntries: 0
+      // ❌ ESKI: bufferMaxEntries: 0 - BU OPTION O'CHIRILDI
+      // ✅ YANGI: Buffer sozlamalari
+      bufferCommands: false, // Buffer ni o'chirish
+      maxPoolSize: 10, // Connection pool hajmi
+      minPoolSize: 1,
+      maxIdleTimeMS: 30000,
+      retryWrites: true
     });
     
     console.log('✅ MongoDB ga muvaffaqiyatli ulandik');
   } catch (error) {
     console.error('❌ MongoDB ulanish xatosi:', error.message);
-    // 5 soniyadan keyin qayta urinish
-    setTimeout(connectDB, 5000);
+    // 10 soniyadan keyin qayta urinish
+    setTimeout(connectDB, 10000);
   }
 };
 
@@ -111,6 +117,8 @@ const ensureConnection = async () => {
   if (mongoose.connection.readyState !== 1) {
     console.log('🔄 MongoDB ulanmagan, qayta ulanmoqda...');
     await connectDB();
+    // Biroz kutish
+    await new Promise(resolve => setTimeout(resolve, 1000));
   }
 };
 
@@ -230,12 +238,23 @@ app.post("/api/comments", async (req, res) => {
 app.get("/api/health", async (req, res) => {
   const dbStatus = mongoose.connection.readyState === 1 ? "connected" : "disconnected";
   
+  let dbPing = false;
+  if (dbStatus === "connected") {
+    try {
+      await mongoose.connection.db.admin().ping();
+      dbPing = true;
+    } catch (error) {
+      dbPing = false;
+    }
+  }
+
   res.json({
     success: true,
     message: "Server ishlayapti",
     timestamp: new Date().toISOString(),
     database: {
       status: dbStatus,
+      ping: dbPing,
       readyState: mongoose.connection.readyState
     }
   });
@@ -251,6 +270,15 @@ app.use("*", (req, res) => {
   res.status(404).json({
     success: false,
     error: "Endpoint topilmadi",
+  });
+});
+
+// Global error handler
+app.use((error, req, res, next) => {
+  console.error("🔥 Global error handler:", error);
+  res.status(500).json({
+    success: false,
+    error: "Ichki server xatosi",
   });
 });
 
