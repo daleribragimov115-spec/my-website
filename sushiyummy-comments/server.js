@@ -26,7 +26,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // MongoDB Atlas ulanishi
-// MongoDB Atlas ulanishi
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://daleribragimov115_db_user:wIOuUwU4qjfrPn9C@cluster0.8kppsgw.mongodb.net/comments_db";
 
 mongoose
@@ -116,7 +115,7 @@ app.post("/api/comments", async (req, res) => {
       console.log("❌ Validatsiya xatosi: Barcha maydonlar to'ldirilmagan");
       return res.status(400).json({
         success: false,
-        error: "Barcha maydonlarni to'ldiring",
+        error: "Заполните все поля.",
       });
     }
 
@@ -127,7 +126,7 @@ app.post("/api/comments", async (req, res) => {
       console.log("❌ Telefon raqami xatosi:", cleanPhone);
       return res.status(400).json({
         success: false,
-        error: "Iltimos, to'g'ri telefon raqamini kiriting",
+        error: "Пожалуйста, введите правильный номер телефона.",
       });
     }
 
@@ -135,7 +134,7 @@ app.post("/api/comments", async (req, res) => {
       console.log("❌ Komment uzunligi xatosi:", comment.length);
       return res.status(400).json({
         success: false,
-        error: "Kommentariya kamida 10 ta belgidan iborat bo'lishi kerak",
+        error: "Комментарий должен содержать как минимум 10 символов.",
       });
     }
 
@@ -166,7 +165,7 @@ app.post("/api/comments", async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "Kommentariya muvaffaqiyatli qo'shildi",
+      message: "Комментарий успешно добавлен.",
       comment: responseComment,
     });
   } catch (error) {
@@ -184,7 +183,7 @@ app.post("/api/comments", async (req, res) => {
     // Boshqa xatolar
     res.status(500).json({
       success: false,
-      error: "Server xatosi: " + error.message,
+      error: "Ошибка сервера: " + error.message,
     });
   }
 });
@@ -206,7 +205,7 @@ app.get("/api/admin/comments", async (req, res) => {
     console.error("❌ Admin kommentlarni olish xatosi:", error);
     res.status(500).json({
       success: false,
-      error: "Server xatosi",
+      error: "Ошибка сервера",
     });
   }
 });
@@ -215,7 +214,7 @@ app.get("/api/admin/comments", async (req, res) => {
 app.get("/api/health", (req, res) => {
   res.json({
     success: true,
-    message: "Server ishlayapti",
+    message: "Server работает",
     timestamp: new Date().toISOString(),
     mongodb:
       mongoose.connection.readyState === 1 ? "connected" : "disconnected",
@@ -231,7 +230,7 @@ app.get("*", (req, res) => {
 app.use("*", (req, res) => {
   res.status(404).json({
     success: false,
-    error: "Endpoint topilmadi",
+    error: "Endpoint не найден",
   });
 });
 
@@ -240,7 +239,7 @@ app.use((error, req, res, next) => {
   console.error("🔥 Global error handler:", error);
   res.status(500).json({
     success: false,
-    error: "Ichki server xatosi",
+    error: "Внутренняя ошибка сервера",
   });
 });
 
