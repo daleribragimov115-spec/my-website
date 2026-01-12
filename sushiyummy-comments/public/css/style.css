@@ -61,6 +61,51 @@
     margin: 0 5px;
 }
 
+.menu-category[data-category="coffee"] .item-image {
+  height: 160px;   /* xohlagan balandlik */
+}
+
+.menu-category[data-category="coffee"] .item-image img {
+  width: 40%;
+  height: 100%;
+  object-fit: cover;
+  margin-left: 30%;
+}
+
+.menu-category[data-category="drink"] .item-image {
+  height: 160px;   /* xohlagan balandlik */
+}
+
+.menu-category[data-category="drink"] .item-image img {
+  width: 36%;
+  height: 100%;
+  object-fit: cover;
+  margin-left: 33%;
+}
+
+/* barcha kartalar uchun rasm joyi */
+.item-image {
+  height: 160px;
+  background: #e9ecef;   /* kulrang */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* rasm bo‘lsa */
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* rasm yo‘q bo‘lsa */
+.item-image img[src=""],
+.item-image img:not([src]) {
+  display: none;
+}
+
+
 /* Pulsatsiya animatsiyasi */
 @keyframes servicePulse {
     0% {
@@ -77,18 +122,6 @@
     }
 }
 
-/* Kichik qizil nuqta (diqqatni tortish uchun)
-.service-notice::before {
-    content: "";
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 8px;
-    height: 8px;
-    background-color: #ff3333;
-    border-radius: 50%;
-    animation: blink 1.5s infinite;
-} */
 
 /* Yonib-o'chish animatsiyasi */
 @keyframes blink {
