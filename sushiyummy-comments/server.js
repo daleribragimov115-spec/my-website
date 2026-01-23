@@ -235,15 +235,18 @@ app.get("/api/health", (req, res) => {
 });
 
 // ✅ TO'G'RI: public papkasidagi index.html ni xizmat qilish
-app.get("*", (req, res) => {
+app.get("*", (req, res, next) => {
+  const accept = req.headers.accept || "";
+  if (!accept.includes("text/html")) return next();
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
 
 // 404 handler
 app.use("*", (req, res) => {
   res.status(404).json({
     success: false,
-    error: "Endpoint topilmadi",
+    error: "Endpoint not found",
   });
 });
 
